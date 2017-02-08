@@ -20,8 +20,10 @@
 
 
 Mythical-Twitter-bot which lets you to tweet instantly without opening browser.
+
 Time utilized - 1 hrs
 Key points - To select form and then tweet it and then select new user everytime.
+TEST #1 - At tweet 11 it is still working fine. - ACCEPTED
 
 '''
 
@@ -50,7 +52,12 @@ time.sleep(1)
 
 previous = 'a'
 tcount = 1
+
 def tweetWork():
+    '''Opens given URL page and extract user information.
+
+    Here you need to change the page URL to specify on which page you want to extract user name
+    '''
     global tcount
     global previous
     print bcolors.OKGREEN+bcolors.BOLD+'Working on Tweet: '+str(tcount+1)+bcolors.ENDC
@@ -93,7 +100,7 @@ def tweetWork():
     if user == previous:
         print bcolors.WARNING+'Time to Sleep'+bcolors.ENDC
         time.sleep(300)
-        time.sleep(300)                  # Time can be change here
+        time.sleep(300)                  # Time can be change here (in seconds)
         print '600 Seconds passed'
         time.sleep(300)
         time.sleep(300)
@@ -108,12 +115,17 @@ def tweetWork():
 
 
 def tweet(user):
+    '''Takes message and then with given user it will tweet it every 30 min.
+
+    No need to change anything here except the given time in seconds and messages 
+    accoding to your needs.
+    '''
     global tcount
 
     # Change your message here
     msg = [' Way to go. You are doing really great work just keep doing it. Happy Coding #100DaysOfCode',' Keep up this good work, What you are doing is really awesome - Happy Coding #100DaysOfCode'," 'No retreat, No surrender', Keep moving forward - Happy Coding #100DaysOfCode"," 'You mustnt be afraid to dream a little bigger', - Happy Coding #100DaysOfCode"," 'If its worth it, fight for it', FIGHT! - Happy Coding #100DaysOfCode"," 'The power to shine is in every one of us', - Happy Coding SHINE Now #100DaysOfCode"," 'Its not gonna be easy, but its gonna be worth it' - Happy Coding #100DaysOfCode"," 'No Excuses', Just do it and do it - Happy Coding #100DaysOfCode"," 'Be YOUR best, despite the odds' - Happy Coding #100DaysOfCode"," 'Dont let anybody tell you that you cant do something'- Happy coding #100DaysOfCode"," 'Nothing stops. Nothing', Confusing? nevermind Keep Coding - #100DaysOfCode"]
     print bcolors.WARNING+'Enabling Tweet setting . . .'
-    url = 'https://mobile.twitter.com/compose/tweet'
+    url = 'https://mobile.twitter.com/compose/tweet'                       #No need to change this it is use to make tweet quickly
     br.open('https://mobile.twitter.com/compose/tweet')
     br.select_form(nr = 0)
     br['tweet[text]'] = user+msg[tcount%11]
@@ -126,7 +138,7 @@ def tweet(user):
     except:
         print bcolors.WARNING+'Submit: Failed'+bcolors.ENDC
     print bcolors.WARNING+'\n\nTime to sleep'+bcolors.ENDC
-    time.sleep(300)
+    time.sleep(300)                                                        # This time can be changed
     time.sleep(300)
     print '600 Seconds passed'
     time.sleep(300)
@@ -137,6 +149,16 @@ def tweet(user):
     print '1800 Seconds passed ... Show time'
     tweetWork()
 
+
+'''
+
+Below code is used to login into twitter account and save cookies
+
+Avoid changing anything from here until and unless you know what you are doing.
+NOTE: COOKIES WILL BE SAVED IN YOUR LOCAL STORAGE SO MAKE SURE YOU TAKE EXTRA CARE
+ELSE ANYONE CAN ACCESS YOUR ACCOUNT BY THAT.
+
+'''
 
 print bcolors.OKBLUE+'''
 .............................IIII.......
@@ -281,10 +303,3 @@ else:
     print bcolors.OKGREEN+'Mythical Bot is ready'+bcolors.ENDC
     check = raw_input('Press Enter to continue')
     tweetWork()
-
-'''
->>> br.select_form(nr = 0)
->>> br['tweet[text]'] = 'Bot testing'
->>> br.submit()
-
-'''
