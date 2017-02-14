@@ -1,4 +1,4 @@
-<img src = "https://i.stack.imgur.com/dlJZv.png" height="100px" width="100px" align="right">
+<img src = "https://i.stack.imgur.com/6AG7X.png" height="50%" width="50%" align="right">
 # Mythical-Bot-twitter
 
 Mythical-bot-twitter is a python based program which lets you to create one simple bot. All you need is one twitter account and rest this program will do for you. 
