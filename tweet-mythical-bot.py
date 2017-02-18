@@ -59,7 +59,7 @@ def loading():
         sys.stdout.write('\r')
         sys.stdout.write("[%-50s] %.2f%%" % ('='*(int(load)/2), load))
         sys.stdout.flush()
-        load = ((i+1)/float(600))*100
+        load = ((i+1)/float(1800))*100
         time.sleep(1)
 
 def tweetWork():
