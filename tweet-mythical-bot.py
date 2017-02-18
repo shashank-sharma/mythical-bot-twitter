@@ -53,6 +53,15 @@ time.sleep(1)
 previous = 'a'
 tcount = 1
 
+def loading():
+    load = 0
+    for i in xrange(1800):
+        sys.stdout.write('\r')
+        sys.stdout.write("[%-50s] %.2f%%" % ('='*(int(load)/2), load))
+        sys.stdout.flush()
+        load = ((i+1)/float(600))*100
+        time.sleep(1)
+
 def tweetWork():
     '''Opens given URL page and extract user information.
 
@@ -98,16 +107,8 @@ def tweetWork():
         print 'Bot found :P'
         tweetWork()
     if user == previous:
-        print bcolors.WARNING+'Time to Sleep'+bcolors.ENDC
-        time.sleep(300)
-        time.sleep(300)                  # Time can be change here (in seconds)
-        print '600 Seconds passed'
-        time.sleep(300)
-        time.sleep(300)
-        print '1200 Seconds passed'
-        time.sleep(300)
-        time.sleep(300)
-        print '1800 Seconds passed ... Show time'
+        print bcolors.WARNING+'Loading next session'+bcolors.ENDC
+        loading()
         tweetWork()
     else:
         previous = user
@@ -137,16 +138,8 @@ def tweet(user):
         tcount+=1
     except:
         print bcolors.WARNING+'Submit: Failed'+bcolors.ENDC
-    print bcolors.WARNING+'\n\nTime to sleep'+bcolors.ENDC
-    time.sleep(300)                                                        # This time can be changed
-    time.sleep(300)
-    print '600 Seconds passed'
-    time.sleep(300)
-    time.sleep(300)
-    print '1200 Seconds passed'
-    time.sleep(300)
-    time.sleep(300)
-    print '1800 Seconds passed ... Show time'
+    print bcolors.WARNING+'\n\nLoading next session'+bcolors.ENDC
+    loading()
     tweetWork()
 
 
